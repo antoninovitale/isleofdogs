@@ -3,6 +3,7 @@ package com.antoninovitale.dogs.breeds.data
 import com.antoninovitale.dogs.breeds.api.Breeds
 import javax.inject.Inject
 
+// TODO Needs tests
 class BreedsDomainMapper @Inject constructor(
     private val breedDomainMapper: BreedDomainMapper
 ) {
@@ -15,6 +16,7 @@ class BreedsDomainMapper @Inject constructor(
         )
 }
 
+// TODO Needs tests
 class BreedDomainMapper @Inject constructor() {
 
     fun map(breed: com.antoninovitale.dogs.breeds.api.Breed): BreedDomain =

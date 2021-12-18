@@ -16,13 +16,13 @@ import kotlin.test.assertEquals
 @ExperimentalCoroutinesApi
 class BreedsViewModelTest {
 
-    @get:Rule
-    val mainCoroutineRule = MainCoroutineRule()
-
     private val repository: BreedsRepository = mockk()
     private val mapper: BreedsItemModelsMapper = mockk()
 
     private val sut: BreedsViewModel = BreedsViewModel(repository, mapper)
+
+    @get:Rule
+    val mainCoroutineRule = MainCoroutineRule()
 
     @Test
     fun `get images for a breed`() = mainCoroutineRule.runBlockingTest {

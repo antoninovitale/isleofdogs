@@ -3,6 +3,7 @@ package com.antoninovitale.dogs.breeds
 import com.antoninovitale.dogs.breeds.data.BreedsDomain
 import javax.inject.Inject
 
+// TODO Needs tests
 class BreedsItemModelsMapper @Inject constructor() {
 
     fun map(breeds: BreedsDomain): List<BreedsItemModel> {
