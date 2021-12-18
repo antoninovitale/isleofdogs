@@ -47,6 +47,7 @@ class BreedsItemAdapter @Inject constructor() :
             binding.breedName.text = item.name
             if (item.parent != null) {
                 binding.breedParent.isVisible = true
+                // This string could have been mapped and made available through the model.
                 binding.breedParent.text =
                     binding.breedParent.context.getString(R.string.sub_breed_of, item.parent)
             } else {

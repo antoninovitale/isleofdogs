@@ -3,20 +3,12 @@ package com.antoninovitale.dogs.breeds.details
 import com.antoninovitale.dogs.breeds.details.data.BreedDetailsRepository
 import io.mockk.coEvery
 import io.mockk.mockk
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.test.TestCoroutineScope
-import kotlinx.coroutines.test.resetMain
 import kotlinx.coroutines.test.runBlockingTest
-import kotlinx.coroutines.test.setMain
 import org.junit.Rule
 import org.junit.Test
-import org.junit.rules.TestWatcher
-import org.junit.runner.Description
-import kotlin.coroutines.ContinuationInterceptor
 import kotlin.test.assertEquals
 
 @ExperimentalCoroutinesApi
@@ -91,19 +83,5 @@ class BreedDetailsViewModelTest {
                 assertEquals(BreedDetailsViewModel.ItemsState.ItemsFailure(exception), it)
             }
         }.cancel()
-    }
-}
-
-@ExperimentalCoroutinesApi
-class MainCoroutineRule : TestWatcher(), TestCoroutineScope by TestCoroutineScope() {
-
-    override fun starting(description: Description) {
-        super.starting(description)
-        Dispatchers.setMain(this.coroutineContext[ContinuationInterceptor] as CoroutineDispatcher)
-    }
-
-    override fun finished(description: Description) {
-        super.finished(description)
-        Dispatchers.resetMain()
     }
 }

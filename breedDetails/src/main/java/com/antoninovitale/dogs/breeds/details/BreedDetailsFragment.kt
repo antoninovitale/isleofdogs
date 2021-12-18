@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.antoninovitale.dogs.breeds.details.BreedDetailsViewModel.ItemsState.*
 import com.antoninovitale.dogs.breeds.details.contract.BreedDetailsArguments
 import com.antoninovitale.dogs.breeds.details.databinding.BreedDetailsFragmentBinding
@@ -16,10 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.collectLatest
 import kotlinx.coroutines.launch
 import javax.inject.Inject
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
-
-
-
 
 @AndroidEntryPoint
 class BreedDetailsFragment : Fragment() {

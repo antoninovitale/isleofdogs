@@ -28,12 +28,25 @@ class BreedsViewModel @Inject constructor(
         loadData()
     }
 
+    /**
+     * Use a [Channel] to send click events.
+     * The channel is then received as flow and collected in the view.
+     *
+     * @see [BreedsFragment.onViewCreated] for more.
+     */
     fun onItemClicked(item: BreedsItemModel) {
         viewModelScope.launch {
             itemClickChannel.send(item)
         }
     }
 
+    /**
+     * Load a list of breeds from a repository.
+     * Initial state is an empty list.
+     * The state is then collected through a flow in the view.
+     *
+     * @see [BreedsFragment.onViewCreated] for more.
+     */
     fun loadData() {
         viewModelScope.launch {
             itemsStateMutable.value = ItemsState.Loading

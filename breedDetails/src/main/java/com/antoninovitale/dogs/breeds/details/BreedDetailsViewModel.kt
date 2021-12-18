@@ -15,11 +15,21 @@ class BreedDetailsViewModel @Inject constructor(
 ) : ViewModel() {
 
     private val itemsStateMutable: MutableStateFlow<ItemsState> =
-        MutableStateFlow(ItemsState.Loading)
+        MutableStateFlow(ItemsState.ItemsReady(emptyList()))
 
-    internal val itemsState: Flow<ItemsState> = itemsStateMutable
+    val itemsState: Flow<ItemsState> = itemsStateMutable
 
-    internal fun loadData(breed: String, parent: String?) {
+    /**
+     * Load images from a repository.
+     * Initial state is an empty list.
+     * The state is then collected through a flow in the view.
+     *
+     * @param breed The breed/sub-breed to load images for
+     * @param parent The breed of a sub-breed if present
+     *
+     * @see [BreedDetailsFragment.onViewCreated] for more.
+     */
+    fun loadData(breed: String, parent: String?) {
         viewModelScope.launch {
             itemsStateMutable.value = ItemsState.Loading
             try {

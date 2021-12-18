@@ -40,33 +40,31 @@ class BreedsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        // Setup views
         adapter.setItemClickListener(vm::onItemClicked)
         binding!!.breeds.adapter = adapter
         binding!!.swipeToRefresh.setOnRefreshListener { vm.loadData() }
 
         viewLifecycleOwner.lifecycleScope.launch {
-            // Observe items
             vm.itemsState
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collectLatest { state ->
                     when (state) {
                         is BreedsViewModel.ItemsState.ItemsReady -> {
                             binding!!.swipeToRefresh.isRefreshing = false
+                            binding!!.pageDetails.isVisible = true
                             binding!!.breeds.isVisible = true
                             binding!!.errorState.isVisible = false
                             adapter.submitList(state.items)
                         }
                         is BreedsViewModel.ItemsState.ItemsFailure -> {
                             binding!!.swipeToRefresh.isRefreshing = false
+                            binding!!.pageDetails.isVisible = false
                             binding!!.breeds.isVisible = false
                             binding!!.errorState.isVisible = true
-                            // Here we can display some text on the screen.
-                            // Using snackbar is possible but the event will be collected again
-                            // on screen rotation or app collapse/expand action.
                         }
                         is BreedsViewModel.ItemsState.Loading -> {
                             binding!!.swipeToRefresh.isRefreshing = true
+                            binding!!.pageDetails.isVisible = false
                             binding!!.breeds.isVisible = false
                             binding!!.errorState.isVisible = false
                         }
@@ -74,12 +72,10 @@ class BreedsFragment : Fragment() {
                 }
         }
         viewLifecycleOwner.lifecycleScope.launch {
-            // Observe click/submit/single event result
             vm.itemClickResult
                 .flowWithLifecycle(viewLifecycleOwner.lifecycle)
                 .collectLatest { item ->
-                    // This event will be fired only once!
-                    // If we rotate the screen or collapse/expand the app - no event collected.
+                    // Navigate to the details page using the action set up in the navigation graph.
                     findNavController().navigate(
                         R.id.action_breeds_to_breed,
                         bundleOf(
