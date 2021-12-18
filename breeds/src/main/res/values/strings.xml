@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="page_details">Here you have a list of breeds.\nClick on an item to see more details.</string>
+    <string name="error_message">Oops!\nSomething wrong happened.\nPull to refresh.</string>
+    <string name="sub_breed_of">Sub-breed of %s</string>
+</resources>

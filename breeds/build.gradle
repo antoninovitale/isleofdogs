@@ -1,0 +1,21 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: rootProject.file('gradle/feature_setup.gradle')
+
+dependencies {
+    implementation project(path: ':breedsData')
+    implementation project(path: ':breedDetailsContract')
+    implementation project(path: ':breedDetails')
+
+    implementation "androidx.fragment:fragment-ktx:$fragment"
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:$swiperefreshlayout"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.cardview:cardview:$cardview"
+
+    kapt "com.google.dagger:hilt-android-compiler:$hilt"
+}

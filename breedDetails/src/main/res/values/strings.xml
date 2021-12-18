@@ -1,0 +1,5 @@
+<resources>
+    <string name="error_message">Oops!\nSomething wrong happened.\nPull to refresh.</string>
+    <string name="breed_name_label">This breed is called:</string>
+    <string name="breed_images_label">Here you have some pictures:</string>
+</resources>

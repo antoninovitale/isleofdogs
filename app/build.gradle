@@ -1,0 +1,18 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: rootProject.file('gradle/feature_setup.gradle')
+
+dependencies {
+    implementation project(path: ':breeds')
+
+    implementation "androidx.constraintlayout:constraintlayout:$constraintlayout"
+    implementation "androidx.navigation:navigation-fragment-ktx:$navigation"
+    implementation "androidx.navigation:navigation-ui-ktx:$navigation"
+
+    kapt "com.google.dagger:hilt-android-compiler:$hilt"
+}

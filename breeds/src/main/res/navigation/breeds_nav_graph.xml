@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/breedsFragment">
+
+    <fragment
+        android:id="@+id/breedsFragment"
+        android:name="com.antoninovitale.dogs.breeds.BreedsFragment"
+        android:label="breeds">
+        <action
+            android:id="@+id/action_breeds_to_breed"
+            app:destination="@id/breedDetailsFragment">
+            <argument
+                android:name="breed"
+                android:defaultValue="none"
+                app:argType="string" />
+            <argument
+                android:name="breedParent"
+                android:defaultValue="none"
+                app:argType="string" />
+        </action>
+    </fragment>
+
+    <fragment
+        android:id="@+id/breedDetailsFragment"
+        android:name="com.antoninovitale.dogs.breeds.details.BreedDetailsFragment"
+        android:label="breedDetails">
+
+        <argument
+            android:name="breed"
+            app:argType="string" />
+        <argument
+            android:name="breedParent"
+            app:argType="string" />
+    </fragment>
+
+</navigation>

@@ -1,0 +1,17 @@
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
+    repositories {
+        google()
+        mavenCentral()
+    }
+}
+rootProject.name = "Dogs"
+include ':app'
+include ':breeds'
+include ':breedDetails'
+include ':breedDetailsApi'
+include ':breedDetailsContract'
+include ':breedDetailsData'
+include ':breedsApi'
+include ':breedsData'
+include ':common'

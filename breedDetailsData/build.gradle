@@ -1,0 +1,13 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+}
+
+apply from: rootProject.file('gradle/library_setup.gradle')
+
+dependencies {
+    implementation project(path: ':breedDetailsApi')
+
+    kapt "com.google.dagger:hilt-android-compiler:$hilt"
+}

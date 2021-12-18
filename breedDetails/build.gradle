@@ -1,0 +1,20 @@
+plugins {
+    id 'com.android.library'
+    id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+}
+
+apply from: rootProject.file('gradle/feature_setup.gradle')
+
+dependencies {
+    implementation project(path: ':breedDetailsContract')
+    implementation project(path: ':breedDetailsData')
+
+    implementation "androidx.fragment:fragment-ktx:$fragment"
+
+    //noinspection GradleDependency
+    implementation "com.squareup.picasso:picasso:$picasso"
+
+    kapt "com.google.dagger:hilt-android-compiler:$hilt"
+}
