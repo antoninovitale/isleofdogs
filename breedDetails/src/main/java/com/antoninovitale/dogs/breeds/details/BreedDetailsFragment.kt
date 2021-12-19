@@ -53,15 +53,18 @@ class BreedDetailsFragment : Fragment() {
                 .collectLatest { state ->
                     when (state) {
                         is ItemsReady -> {
+                            binding!!.breedImagesLabel.isVisible = true
                             binding!!.breedImages.isVisible = true
                             binding!!.errorState.isVisible = false
                             adapter.submitList(state.items)
                         }
                         is ItemsFailure -> {
+                            binding!!.breedImagesLabel.isVisible = false
                             binding!!.breedImages.isVisible = false
                             binding!!.errorState.isVisible = true
                         }
                         is Loading -> {
+                            binding!!.breedImagesLabel.isVisible = false
                             binding!!.breedImages.isVisible = false
                             binding!!.errorState.isVisible = false
                         }
