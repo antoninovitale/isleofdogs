@@ -24,10 +24,6 @@ class BreedsViewModel @Inject constructor(
     val itemsState: Flow<ItemsState> = itemsStateMutable
     val itemClickResult: Flow<BreedsItemModel> = itemClickChannel.receiveAsFlow()
 
-    init {
-        loadData()
-    }
-
     /**
      * Use a [Channel] to send click events.
      * The channel is then received as flow and collected in the view.

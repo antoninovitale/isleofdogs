@@ -85,6 +85,8 @@ class BreedsFragment : Fragment() {
                     )
                 }
         }
+
+        vm.loadData()
     }
 
     override fun onDestroyView() {
