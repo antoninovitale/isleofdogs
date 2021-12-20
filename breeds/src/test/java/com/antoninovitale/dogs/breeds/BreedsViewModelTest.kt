@@ -25,7 +25,7 @@ class BreedsViewModelTest {
     private val sut: BreedsViewModel = BreedsViewModel(repository, mapper)
 
     @Test
-    fun `get images for a breed`() = mainCoroutineRule.runBlockingTest {
+    fun `loads breeds`() = mainCoroutineRule.runBlockingTest {
         coEvery { repository.getBreeds() } returns BreedsDomain(listOf())
         every { mapper.map(BreedsDomain(listOf())) } returns listOf()
 
@@ -42,7 +42,7 @@ class BreedsViewModelTest {
     }
 
     @Test
-    fun `error getting images for a breed`() = mainCoroutineRule.runBlockingTest {
+    fun `error loading breeds`() = mainCoroutineRule.runBlockingTest {
         val exception = Exception()
         coEvery { repository.getBreeds() } throws exception
         every { mapper.map(BreedsDomain(listOf())) } returns listOf()
@@ -60,7 +60,7 @@ class BreedsViewModelTest {
     }
 
     @Test
-    fun `on item click`() = mainCoroutineRule.runBlockingTest {
+    fun `clicks on an item`() = mainCoroutineRule.runBlockingTest {
         val item = BreedsItemModel("breed", "parent")
 
         sut.onItemClicked(item)
